@@ -9,11 +9,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Parador Roca · Carta Digital</title>
 
-    <!-- Precarga de recursos críticos -->
+    <!-- Precarga de imágenes críticas -->
     <link rel="preload" href="img/hero-bg.webp" as="image" fetchpriority="high">
     <link rel="preload" href="img/logo.webp" as="image">
 
-    <!-- Google Fonts con display swap -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -129,7 +129,6 @@
             z-index: 2;
         }
 
-        /* Las secciones se benefician de content-visibility para no pintar las que están fuera de pantalla */
         .section {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
@@ -139,8 +138,6 @@
             margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
             box-shadow: var(--sombra-suave);
             border: 1px solid rgba(212,163,115,0.2);
-            content-visibility: auto;
-            contain-intrinsic-size: auto 500px;
         }
 
         .section-header {
@@ -229,6 +226,13 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.04);
             touch-action: manipulation;
             position: relative;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .item-price:focus-visible {
+            outline: 2px solid var(--verde);
+            outline-offset: 2px;
         }
 
         .item-price::after {
@@ -409,7 +413,6 @@
             }
         }
 
-        /* Ajustes responsivos */
         @media (max-width: 400px) {
             .item-no-img {
                 flex-direction: column;
@@ -420,10 +423,11 @@
             }
         }
 
-        /* Safari iOS: backdrop-filter fallback */
+        /* Corrección para iOS Safari */
         @supports (-webkit-touch-callout: none) {
             body {
                 background-attachment: scroll;
+                -webkit-background-attachment: scroll;
             }
             .section,
             .order-section,
@@ -443,7 +447,7 @@
 <body>
     <header class="hero">
         <div class="hero-content">
-            <img src="img/logo.webp" alt="Parador Roca" class="logo-hero" width="160" height="160" decoding="async">
+            <img src="img/logo.webp" alt="Logotipo de Parador Roca" class="logo-hero" width="160" height="160" decoding="async">
             <div class="scroll-indicator">
                 <span class="scroll-text">Deslizá para ver el menú</span>
                 <div class="scroll-arrow"></div>
@@ -458,17 +462,18 @@
                 <div class="section-icon" aria-hidden="true">🧀</div>
                 <h2 class="section-title">Vigilantes Caseros</h2>
             </div>
+
             <div class="item-no-img">
                 <h3 class="item-name">Batata con Queso</h3>
-                <p class="item-price">$5.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 5.000">$5.000</p>
             </div>
             <div class="item-no-img">
                 <h3 class="item-name">Membrillo con Queso</h3>
-                <p class="item-price">$5.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 5.000">$5.000</p>
             </div>
             <div class="item-no-img">
                 <h3 class="item-name">Durazno con Dulce de Leche</h3>
-                <p class="item-price">$6.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 6.000">$6.000</p>
             </div>
         </section>
 
@@ -478,21 +483,22 @@
                 <div class="section-icon" aria-hidden="true">🍨</div>
                 <h2 class="section-title">Helados Artesanales</h2>
             </div>
+
             <div class="item-no-img">
                 <h3 class="item-name">Helado Suizo</h3>
-                <p class="item-price">$6.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 6.000">$6.000</p>
             </div>
             <div class="item-no-img">
                 <h3 class="item-name">Helado Escocés</h3>
-                <p class="item-price">$6.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 6.000">$6.000</p>
             </div>
             <div class="item-no-img">
                 <h3 class="item-name">Helado Almendras</h3>
-                <p class="item-price">$6.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 6.000">$6.000</p>
             </div>
             <div class="item-no-img">
                 <h3 class="item-name">Helado Bombón</h3>
-                <p class="item-price">$6.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 6.000">$6.000</p>
             </div>
         </section>
 
@@ -502,17 +508,18 @@
                 <div class="section-icon" aria-hidden="true">☕</div>
                 <h2 class="section-title">Café de Especialidad</h2>
             </div>
+
             <div class="item-no-img">
                 <h3 class="item-name">Café Tradicional <span class="badge badge-clasico">Clásico</span></h3>
-                <p class="item-price">$5.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 5.000">$5.000</p>
             </div>
             <div class="item-no-img">
                 <h3 class="item-name">Café Brasil</h3>
-                <p class="item-price">$6.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 6.000">$6.000</p>
             </div>
             <div class="item-no-img">
                 <h3 class="item-name">Café Colombia</h3>
-                <p class="item-price">$6.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 6.000">$6.000</p>
             </div>
         </section>
 
@@ -522,21 +529,22 @@
                 <div class="section-icon" aria-hidden="true">🥩</div>
                 <h2 class="section-title">Parrilla & Picadas</h2>
             </div>
+
             <div class="item-no-img">
                 <h3 class="item-name">Choripán</h3>
-                <p class="item-price">$10.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 10.000">$10.000</p>
             </div>
             <div class="item-no-img">
                 <h3 class="item-name">Bondiola <span class="badge badge-star">⭐ Imperdible</span></h3>
-                <p class="item-price">$12.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 12.000">$12.000</p>
             </div>
             <div class="item-no-img">
                 <h3 class="item-name">Picada (1 persona)</h3>
-                <p class="item-price">$12.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 12.000">$12.000</p>
             </div>
             <div class="item-no-img">
                 <h3 class="item-name">Picada (4 personas)</h3>
-                <p class="item-price">$20.000</p>
+                <p class="item-price" role="button" tabindex="0" aria-label="Ir a opciones de pago, precio 20.000">$20.000</p>
             </div>
         </section>
 
@@ -550,7 +558,6 @@
             <div class="payment-option">
                 <p class="payment-text">¿Querés pagar ahora con tu celu?</p>
                 <a href="https://link.mercadopago.com.ar/paradoroca" target="_blank" rel="noopener" class="btn-mercadopago" aria-label="Pagar con Mercado Pago">
-                    <!-- SVG oficial de Mercado Pago (mano con tarjeta) -->
                     <svg class="mp-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="12" cy="12" r="12" fill="white" fill-opacity="0.2"/>
                         <path d="M8 10.5V16.5C8 17.3284 8.67157 18 9.5 18H14.5C15.3284 18 16 17.3284 16 16.5V10.5M8 10.5L10 8.5H14L16 10.5M8 10.5H16M12 13.5V15.5M9 13H15" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -571,28 +578,74 @@
     <script>
         (function() {
             const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const priceElements = document.querySelectorAll('.item-price');
 
-            // Scroll al tocar precio
-            document.querySelectorAll('.item-price').forEach(price => {
-                const eventType = isTouchDevice ? 'touchend' : 'click';
-                price.addEventListener(eventType, function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const target = document.getElementById('pedir-en-caja');
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        // Feedback táctil
-                        this.style.transform = 'scale(0.95)';
-                        setTimeout(() => this.style.transform = '', 150);
+            // Función que se ejecuta al hacer tap / click real
+            function goToPayment(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const target = document.getElementById('pedir-en-caja');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            // Feedback visual
+            function addTapFeedback(el) {
+                el.style.transform = 'scale(0.95)';
+                setTimeout(() => { el.style.transform = ''; }, 150);
+            }
+
+            priceElements.forEach(price => {
+                // Accesibilidad: también funciona con teclado
+                price.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        goToPayment(e);
+                        addTapFeedback(price);
                     }
                 });
-                // Evitar doble disparo en touch
+
                 if (isTouchDevice) {
-                    price.addEventListener('click', e => e.preventDefault());
+                    let startX = 0, startY = 0;
+                    let swiped = false;
+
+                    price.addEventListener('touchstart', (e) => {
+                        startX = e.touches[0].clientX;
+                        startY = e.touches[0].clientY;
+                        swiped = false;
+                    }, { passive: true });
+
+                    price.addEventListener('touchmove', (e) => {
+                        if (!swiped) {
+                            const dx = e.touches[0].clientX - startX;
+                            const dy = e.touches[0].clientY - startY;
+                            // Umbral de 15px para considerar swipe
+                            if (Math.abs(dx) > 15 || Math.abs(dy) > 15) {
+                                swiped = true;
+                            }
+                        }
+                    }, { passive: true });
+
+                    price.addEventListener('touchend', (e) => {
+                        if (!swiped) {
+                            goToPayment(e);
+                            addTapFeedback(price);
+                        }
+                    });
+
+                    // Prevenir el click fantasma
+                    price.addEventListener('click', (e) => e.preventDefault());
+                } else {
+                    // Escritorio: click normal
+                    price.addEventListener('click', (e) => {
+                        goToPayment(e);
+                        addTapFeedback(price);
+                    });
                 }
             });
 
-            // Animación progresiva al entrar en pantalla
+            // Animación progresiva al hacer scroll
             const items = document.querySelectorAll('.item-no-img');
             if ('IntersectionObserver' in window) {
                 const observer = new IntersectionObserver((entries) => {
@@ -603,21 +656,21 @@
                         }
                     });
                 }, { threshold: 0.1 });
+
                 items.forEach((item, i) => {
                     item.style.animationDelay = `${i * 0.05}s`;
                     item.style.animationPlayState = 'paused';
                     observer.observe(item);
                 });
             } else {
-                // Fallback inmediato
                 items.forEach((item, i) => {
                     item.style.animationDelay = `${i * 0.05}s`;
                     item.style.animationPlayState = 'running';
                 });
             }
 
-            // Prevenir gestos no deseados en iOS
-            document.addEventListener('gesturestart', e => e.preventDefault());
+            // iOS previene gestos inesperados
+            document.addEventListener('gesturestart', (e) => e.preventDefault());
         })();
     </script>
 </body>
